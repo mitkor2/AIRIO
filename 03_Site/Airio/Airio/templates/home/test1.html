@@ -1,0 +1,649 @@
+{% extends 'base.html' %}
+{% block page_content %}
+{% load staticfiles %}
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">c <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Start Header Top Area -->
+    <div class="header-top-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="logo-area">
+                        <a href="#"><img src="{% static "img/logo/rsz_1rsz_logo.png" %}"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header Top Area -->
+    <!-- Start Status area -->
+    <div class="notika-status-area">
+        <div class="container">
+            <div class="row">
+                <!-- PM 1.0 - 4.0 -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>PM 1.0</h2>
+                            <div id="chartdiv"  style="border-top: 20px"></div>
+                            <h2><span id="s_pm1_0" class="counter"></span> µg/m3</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>PM 2.5</h2>
+                            <div id="chartdiv1"  style="border-top: 20px"></div>
+                            <h2><span id="s_pm2_5" class="counter"></span> µg/m3</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>PM 4.0</h2>
+                            <div id="chartdiv2"  style="border-top: 20px"></div>
+                            <h2><span id="s_pm4_0" class="counter"></span> µg/m3</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- PM 10 -  Temp - Hum -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>PM 10</h2>
+                            <div id="chartdiv3"  style="border-top: 20px"></div>
+                            <h2><span id="s_pm10" class="counter"></span> µg/m3</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>Temp</h2>
+                            <div id="chartdiv4"  style="border-top: 20px"></div>
+                            <h2><span id="s_temperature" class="counter"></span> °C</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>Hum</h2>
+                            <div id="chartdiv5"  style="border-top: 20px"></div>
+                            <h2><span id="s_humidity" class="counter"></span> %</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- O3 -  CO - SO2 -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>O3</h2>
+                            <div id="chartdiv6"  style="border-top: 20px"></div>
+                            <h2><span id="s_ozone" class="counter"></span></h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>CO</h2>
+                            <div id="chartdiv7"  style="border-top: 20px"></div>
+                            <h2><span id="s_carbonMonoxide" class="counter"></span></h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>SO2</h2>
+                            <div id="chartdiv8"  style="border-top: 20px"></div>
+                            <h2><span id="s_sulfurDioxide" class="counter"></span></h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- NO2 -  PRES  -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>NO2</h2>
+                            <div id="chartdiv9"  style="border-top: 20px"></div>
+                            <h2><span  id="s_nitrogenDioxide" class="counter"></span></h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>Pressure</h2>
+                            <div id="chartdiv10"  style="border-top: 20px"></div>
+                            <h2><span id="s_pressure" class="counter"></span> hPa</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>Location</h2>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1709.4760572976766!2d23.16791465068629!3d42.577828223406705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aacd4089ab6a61%3A0x797e973daf549ac0!2z0YPQu9C40YbQsCDQmtCw0LzRh9C40Y8sIDIzNDMgUnVkYXJ0c2k!5e0!3m2!1sen!2sbg!4v1593086935011!5m2!1sen!2sbg" width="100%" height="330" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Footer area-->
+    <div class="footer-copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright © 2020 . All rights reserved by <a href="https://zekeng.com">ZEKENG</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#    <script src="{% static "charts.js" %}"></script>#}
+    <script type="text/javascript">
+        var data_list = new Array();
+        var avg_pm1_0 = 0;
+
+        $(document).ready(function() { // it loads data from data_list, which comes from back-end
+            {% for data in data_list %}
+                data_list.push({
+                    "timestamp": {{ data.timestamp }},
+                    "temperature": {{ data.temperature }},
+                    "humidity": {{ data.humidity }},
+                    "pressure": {{ data.pressure }},
+                    "ozone": {{ data.ozone }},
+                    "carbonMonoxide": {{ data.carbonMonoxide }},
+                    "sulfurDioxide": {{ data.sulfurDioxide }},
+                    "nitrogenDioxide": {{ data.nitrogenDioxide }},
+                    "pm1_0": {{ data.pm1_0 }},
+                    "pm2_5": {{ data.pm2_5 }},
+                    "pm4_0": {{ data.pm4_0 }},
+                    "pm10": {{ data.pm10 }},
+                });
+                avg_pm1_0 += {{ data.pm1_0 }};
+            {% endfor %}
+
+            {% if data_list|length != 0 %}
+                avg_pm1_0 = avg_pm1_0 / {{ data_list|length }};
+            {% endif %}
+
+            console.log(data_list);
+        });
+    // Themes begin
+am4core.useTheme(am4themes_kelly);
+// Themes end
+
+// create chart
+var chart = am4core.create("chartdiv", am4charts.GaugeChart);
+chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart.innerRadius = -25;
+
+var axis = chart.xAxes.push(new am4charts.ValueAxis());
+axis.min = 0;
+axis.max = 200;
+axis.strictMinMax = true;
+axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+var range0 = axis.axisRanges.create();
+range0.value = 0;
+range0.endValue = 50;
+range0.axisFill.fillOpacity = 1;
+range0.axisFill.fill = colorSet.getIndex(0);
+range0.axisFill.zIndex = - 1;
+
+var range1 = axis.axisRanges.create();
+range1.value = 50;
+range1.endValue = 150;
+range1.axisFill.fillOpacity = 1;
+range1.axisFill.fill = colorSet.getIndex(2);
+range1.axisFill.zIndex = -1;
+
+var range2 = axis.axisRanges.create();
+range2.value = 150;
+range2.endValue = 200;
+range2.axisFill.fillOpacity = 1;
+range2.axisFill.fill = colorSet.getIndex(4);
+range2.axisFill.zIndex = -1;
+
+var hand = chart.hands.push(new am4charts.ClockHand());
+
+{#/* --- new ---- */#}
+var chart1 = am4core.create("chartdiv1", am4charts.GaugeChart);
+chart1.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart1.innerRadius = -25;
+
+var axis1 = chart1.xAxes.push(new am4charts.ValueAxis());
+axis1.min = 0;
+axis1.max = 200;
+axis1.strictMinMax = true;
+axis1.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis1.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart1_range0 = axis1.axisRanges.create();
+chart1_range0.value = 0;
+chart1_range0.endValue = 50;
+chart1_range0.axisFill.fillOpacity = 1;
+chart1_range0.axisFill.fill = colorSet.getIndex(0);
+chart1_range0.axisFill.zIndex = - 1;
+
+var chart1_range1 = axis1.axisRanges.create();
+chart1_range1.value = 50;
+chart1_range1.endValue = 150;
+chart1_range1.axisFill.fillOpacity = 1;
+chart1_range1.axisFill.fill = colorSet.getIndex(2);
+chart1_range1.axisFill.zIndex = -1;
+
+var chart1_range2 = axis1.axisRanges.create();
+chart1_range2.value = 150;
+chart1_range2.endValue = 200;
+chart1_range2.axisFill.fillOpacity = 1;
+chart1_range2.axisFill.fill = colorSet.getIndex(4);
+chart1_range2.axisFill.zIndex = -1;
+
+var hand1 = chart1.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart2 = am4core.create("chartdiv2", am4charts.GaugeChart);
+chart2.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart2.innerRadius = -25;
+
+var axis2 = chart2.xAxes.push(new am4charts.ValueAxis());
+axis2.min = 0;
+axis2.max = 200;
+axis2.strictMinMax = true;
+axis2.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis2.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart2_range0 = axis2.axisRanges.create();
+chart2_range0.value = 0;
+chart2_range0.endValue = 50;
+chart2_range0.axisFill.fillOpacity = 1;
+chart2_range0.axisFill.fill = colorSet.getIndex(0);
+chart2_range0.axisFill.zIndex = - 1;
+
+var chart2_range1 = axis2.axisRanges.create();
+chart2_range1.value = 50;
+chart2_range1.endValue = 150;
+chart2_range1.axisFill.fillOpacity = 1;
+chart2_range1.axisFill.fill = colorSet.getIndex(2);
+chart2_range1.axisFill.zIndex = -1;
+
+var chart2_range2 = axis2.axisRanges.create();
+chart2_range2.value = 150;
+chart2_range2.endValue = 200;
+chart2_range2.axisFill.fillOpacity = 1;
+chart2_range2.axisFill.fill = colorSet.getIndex(4);
+chart2_range2.axisFill.zIndex = -1;
+
+var hand2 = chart2.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart3 = am4core.create("chartdiv3", am4charts.GaugeChart);
+chart3.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart3.innerRadius = -25;
+
+var axis3 = chart3.xAxes.push(new am4charts.ValueAxis());
+axis3.min = 0;
+axis3.max = 200;
+axis3.strictMinMax = true;
+axis3.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis3.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart3_range0 = axis3.axisRanges.create();
+chart3_range0.value = 0;
+chart3_range0.endValue = 50;
+chart3_range0.axisFill.fillOpacity = 1;
+chart3_range0.axisFill.fill = colorSet.getIndex(0);
+chart3_range0.axisFill.zIndex = - 1;
+
+var chart3_range1 = axis3.axisRanges.create();
+chart3_range1.value = 50;
+chart3_range1.endValue = 150;
+chart3_range1.axisFill.fillOpacity = 1;
+chart3_range1.axisFill.fill = colorSet.getIndex(2);
+chart3_range1.axisFill.zIndex = -1;
+
+var chart3_range2 = axis3.axisRanges.create();
+chart3_range2.value = 150;
+chart3_range2.endValue = 200;
+chart3_range2.axisFill.fillOpacity = 1;
+chart3_range2.axisFill.fill = colorSet.getIndex(4);
+chart3_range2.axisFill.zIndex = -1;
+
+var hand3 = chart3.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart4 = am4core.create("chartdiv4", am4charts.GaugeChart);
+chart4.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart4.innerRadius = -25;
+
+var axis4 = chart4.xAxes.push(new am4charts.ValueAxis());
+axis4.min = -30;
+axis4.max = 45;
+axis4.strictMinMax = true;
+axis4.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis4.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart4_range0 = axis4.axisRanges.create();
+chart4_range0.value = -30;
+chart4_range0.endValue = 25;
+chart4_range0.axisFill.fillOpacity = 1;
+chart4_range0.axisFill.fill = colorSet.getIndex(0);
+chart4_range0.axisFill.zIndex = - 1;
+
+var chart4_range1 = axis4.axisRanges.create();
+chart4_range1.value = 25;
+chart4_range1.endValue = 35;
+chart4_range1.axisFill.fillOpacity = 1;
+chart4_range1.axisFill.fill = colorSet.getIndex(2);
+chart4_range1.axisFill.zIndex = -1;
+
+var chart4_range2 = axis4.axisRanges.create();
+chart4_range2.value = 35;
+chart4_range2.endValue = 45;
+chart4_range2.axisFill.fillOpacity = 1;
+chart4_range2.axisFill.fill = colorSet.getIndex(4);
+chart4_range2.axisFill.zIndex = -1;
+
+var hand4 = chart4.hands.push(new am4charts.ClockHand());
+
+/* --- new ---- */
+var chart5 = am4core.create("chartdiv5", am4charts.GaugeChart);
+chart5.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart5.innerRadius = -25;
+
+var axis5 = chart5.xAxes.push(new am4charts.ValueAxis());
+axis5.min = 0;
+axis5.max = 100;
+axis5.strictMinMax = true;
+axis5.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis5.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart5_range0 = axis5.axisRanges.create();
+chart5_range0.value = 0;
+chart5_range0.endValue = 50;
+chart5_range0.axisFill.fillOpacity = 1;
+chart5_range0.axisFill.fill = colorSet.getIndex(0);
+chart5_range0.axisFill.zIndex = - 1;
+
+var chart5_range1 = axis5.axisRanges.create();
+chart5_range1.value = 50;
+chart5_range1.endValue = 80;
+chart5_range1.axisFill.fillOpacity = 1;
+chart5_range1.axisFill.fill = colorSet.getIndex(2);
+chart5_range1.axisFill.zIndex = -1;
+
+var chart5_range2 = axis5.axisRanges.create();
+chart5_range2.value = 80;
+chart5_range2.endValue = 100;
+chart5_range2.axisFill.fillOpacity = 1;
+chart5_range2.axisFill.fill = colorSet.getIndex(4);
+chart5_range2.axisFill.zIndex = -1;
+
+var hand5 = chart5.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart6 = am4core.create("chartdiv6", am4charts.GaugeChart);
+chart6.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart6.innerRadius = -25;
+
+var axis6 = chart6.xAxes.push(new am4charts.ValueAxis());
+axis6.min = 0;
+axis6.max = 100;
+axis6.strictMinMax = true;
+axis6.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis6.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart6_range0 = axis6.axisRanges.create();
+chart6_range0.value = 0;
+chart6_range0.endValue = 50;
+chart6_range0.axisFill.fillOpacity = 1;
+chart6_range0.axisFill.fill = colorSet.getIndex(0);
+chart6_range0.axisFill.zIndex = - 1;
+
+var chart6_range1 = axis6.axisRanges.create();
+chart6_range1.value = 50;
+chart6_range1.endValue = 80;
+chart6_range1.axisFill.fillOpacity = 1;
+chart6_range1.axisFill.fill = colorSet.getIndex(2);
+chart6_range1.axisFill.zIndex = -1;
+
+var chart6_range2 = axis6.axisRanges.create();
+chart6_range2.value = 80;
+chart6_range2.endValue = 100;
+chart6_range2.axisFill.fillOpacity = 1;
+chart6_range2.axisFill.fill = colorSet.getIndex(4);
+chart6_range2.axisFill.zIndex = -1;
+
+var hand6 = chart6.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart7 = am4core.create("chartdiv7", am4charts.GaugeChart);
+chart7.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart7.innerRadius = -25;
+
+var axis7 = chart7.xAxes.push(new am4charts.ValueAxis());
+axis7.min = 0;
+axis7.max = 100;
+axis7.strictMinMax = true;
+axis7.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis7.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart7_range0 = axis7.axisRanges.create();
+chart7_range0.value = 0;
+chart7_range0.endValue = 50;
+chart7_range0.axisFill.fillOpacity = 1;
+chart7_range0.axisFill.fill = colorSet.getIndex(0);
+chart7_range0.axisFill.zIndex = - 1;
+
+var chart7_range1 = axis7.axisRanges.create();
+chart7_range1.value = 50;
+chart7_range1.endValue = 80;
+chart7_range1.axisFill.fillOpacity = 1;
+chart7_range1.axisFill.fill = colorSet.getIndex(2);
+chart7_range1.axisFill.zIndex = -1;
+
+var chart7_range2 = axis7.axisRanges.create();
+chart7_range2.value = 80;
+chart7_range2.endValue = 100;
+chart7_range2.axisFill.fillOpacity = 1;
+chart7_range2.axisFill.fill = colorSet.getIndex(4);
+chart7_range2.axisFill.zIndex = -1;
+
+var hand7 = chart7.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart8 = am4core.create("chartdiv8", am4charts.GaugeChart);
+chart8.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart8.innerRadius = -25;
+
+var axis8 = chart8.xAxes.push(new am4charts.ValueAxis());
+axis8.min = 0;
+axis8.max = 100;
+axis8.strictMinMax = true;
+axis8.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis8.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart8_range0 = axis8.axisRanges.create();
+chart8_range0.value = 0;
+chart8_range0.endValue = 50;
+chart8_range0.axisFill.fillOpacity = 1;
+chart8_range0.axisFill.fill = colorSet.getIndex(0);
+chart8_range0.axisFill.zIndex = - 1;
+
+var chart8_range1 = axis8.axisRanges.create();
+chart8_range1.value = 50;
+chart8_range1.endValue = 80;
+chart8_range1.axisFill.fillOpacity = 1;
+chart8_range1.axisFill.fill = colorSet.getIndex(2);
+chart8_range1.axisFill.zIndex = -1;
+
+var chart8_range2 = axis8.axisRanges.create();
+chart8_range2.value = 80;
+chart8_range2.endValue = 100;
+chart8_range2.axisFill.fillOpacity = 1;
+chart8_range2.axisFill.fill = colorSet.getIndex(4);
+chart8_range2.axisFill.zIndex = -1;
+
+var hand8 = chart8.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart9 = am4core.create("chartdiv9", am4charts.GaugeChart);
+chart9.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart9.innerRadius = -25;
+
+var axis9 = chart9.xAxes.push(new am4charts.ValueAxis());
+axis9.min = 0;
+axis9.max = 100;
+axis9.strictMinMax = true;
+axis9.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis9.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart9_range0 = axis9.axisRanges.create();
+chart9_range0.value = 0;
+chart9_range0.endValue = 50;
+chart9_range0.axisFill.fillOpacity = 1;
+chart9_range0.axisFill.fill = colorSet.getIndex(0);
+chart9_range0.axisFill.zIndex = - 1;
+
+var chart9_range1 = axis9.axisRanges.create();
+chart9_range1.value = 50;
+chart9_range1.endValue = 80;
+chart9_range1.axisFill.fillOpacity = 1;
+chart9_range1.axisFill.fill = colorSet.getIndex(2);
+chart9_range1.axisFill.zIndex = -1;
+
+var chart9_range2 = axis9.axisRanges.create();
+chart9_range2.value = 80;
+chart9_range2.endValue = 100;
+chart9_range2.axisFill.fillOpacity = 1;
+chart9_range2.axisFill.fill = colorSet.getIndex(4);
+chart9_range2.axisFill.zIndex = -1;
+
+var hand9 = chart9.hands.push(new am4charts.ClockHand());
+/* --- new ---- */
+var chart10 = am4core.create("chartdiv10", am4charts.GaugeChart);
+chart10.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart10.innerRadius = -25;
+
+var axis10 = chart10.xAxes.push(new am4charts.ValueAxis());
+axis10.min = 0;
+axis10.max = 1600;
+axis10.strictMinMax = true;
+axis10.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+axis10.renderer.grid.template.strokeOpacity = 0.3;
+
+var colorSet = new am4core.ColorSet();
+
+var chart10_range0 = axis10.axisRanges.create();
+chart10_range0.value = 0;
+chart10_range0.endValue = 1000;
+chart10_range0.axisFill.fillOpacity = 1;
+chart10_range0.axisFill.fill = colorSet.getIndex(0);
+chart10_range0.axisFill.zIndex = - 1;
+
+var chart10_range1 = axis10.axisRanges.create();
+chart10_range1.value = 1000;
+chart10_range1.endValue = 1250;
+chart10_range1.axisFill.fillOpacity = 1;
+chart10_range1.axisFill.fill = colorSet.getIndex(2);
+chart10_range1.axisFill.zIndex = -1;
+
+var chart10_range2 = axis10.axisRanges.create();
+chart10_range2.value = 1250;
+chart10_range2.endValue = 1600;
+chart10_range2.axisFill.fillOpacity = 1;
+chart10_range2.axisFill.fill = colorSet.getIndex(4);
+chart10_range2.axisFill.zIndex = -1;
+
+var hand10 = chart10.hands.push(new am4charts.ClockHand());
+
+
+        var data_list = new Array();
+
+        function timer_func() {
+            $.ajax({
+               url: "/get_latest_data",
+               type:"POST",
+               success: function(res) {
+                   res = JSON.parse(res);
+                   $("#s_pm1_0").text(res["pm1_0"]);
+                   $("#s_pm2_5").text(res["pm2_5"]);
+                   $("#s_pm4_0").text(res["pm4_0"]);
+                   $("#s_pm10").text(res["pm10"]);
+                   $("#s_temperature").text(res["temperature"]);
+                   $("#s_humidity").text(res["humidity"]);
+                   $("#s_ozone").text(Math.round(res["ozone"]/26));
+                   $("#s_carbonMonoxide").text(Math.round(res["carbonMonoxide"]/9000));
+                   $("#s_sulfurDioxide").text(Math.round(res["sulfurDioxide"]/1000));
+                   $("#s_nitrogenDioxide").text(Math.round(res["nitrogenDioxide"]/100));
+                   $("#s_pressure").text(res["pressure"]);
+                   {#Math.round()#}
+                   hand.showValue(res["pm1_0"], 1000, am4core.ease.cubicOut);
+                   hand1.showValue(res["pm2_5"], 1000, am4core.ease.cubicOut);
+                   hand2.showValue(res["pm4_0"], 1000, am4core.ease.cubicOut);
+                   hand3.showValue(res["pm10"], 1000, am4core.ease.cubicOut);
+                   hand4.showValue(res["temperature"], 1000, am4core.ease.cubicOut);
+                   hand5.showValue(res["humidity"], 1000, am4core.ease.cubicOut);
+                   hand6.showValue(Math.round(res["ozone"]/26), 1000, am4core.ease.cubicOut);
+                   hand7.showValue(Math.round(res["carbonMonoxide"]/9000), 1000, am4core.ease.cubicOut);
+                   hand8.showValue(Math.round(res["sulfurDioxide"]/1000), 1000, am4core.ease.cubicOut);
+                   hand9.showValue(Math.round(res["nitrogenDioxide"]/100), 1000, am4core.ease.cubicOut);
+                   hand10.showValue(res["pressure"], 1000, am4core.ease.cubicOut);
+               }
+            });
+        }
+
+        $(document).ready(function() {
+            var timer_obj = window.setInterval(function() {
+                timer_func();
+            }, 500);
+        });
+    </script>
+{% endblock %}

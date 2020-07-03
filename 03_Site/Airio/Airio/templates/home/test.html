@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="container">
+        <div style="margin-top:100px">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Timestamp</th>
+                    <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Pressure</th>
+                    <th>Ozone</th>
+                </thead>
+                <tbody>
+                    {% for data in data_list %}
+                        <tr>
+                            <td>{{ data.timestamp }}</td>
+                            <td>{{ data.temperature }}</td>
+                            <td>{{ data.humidity }}</td>
+                            <td>{{ data.pressure }}</td>
+                            <td>{{ data.ozone }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var data_list = new Array();
+
+        $(document).ready(function() {
+            {% for data in data_list %}
+                data_list.push({
+                    "timestamp": {{ data.timestamp }},
+                    "temperature": {{ data.temperature }},
+                    "humidity": {{ data.humidity }},
+                    "pressure": {{ data.pressure }},
+                    "ozone": {{ data.ozone }},
+                });
+            {% endfor %}
+
+            console.log(data_list);
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="configPkg" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/cfg/debug_pem4f.c"/>
+    </sources>
+    <configscripts>
+        <srcFile name="E:/Intership/Other_projects/MsysCode/tirtos_builds_MSP_EXP432P401R_debug_ccs/debug.cfg"/>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/cfg/debug_pem4f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/debug_pem4f.oem4f.dep" src="package/cfg/debug_pem4f.c"/>
+        <srcFile name="package/cfg/debug_pem4f.dep" src="package/cfg/debug_pem4f.cfg"/>
+        <srcFile name="package/cfg/debug.xem4f.mak" src="package.bld"/>
+        <srcFile name="package/rel/configPkg.tar.dep" src="package/rel/configPkg.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,20.2,1"
+            rawVersion="20.2.1"
+            platform="ti.platforms.tiva:TM4C1294NCPDT:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.1.LTS"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    <configuration name="debug"
+        pname="debug.pem4f"
+        target="ti.targets.arm.elf.M4F"
+        platform="ti.platforms.msp432:MSP432P401R"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/debug_pem4f.cfg"
+        xCfgPrefix="package/cfg/debug_pem4f"
+        cfgScript="E:/Intership/Other_projects/MsysCode/tirtos_builds_MSP_EXP432P401R_debug_ccs/debug.cfg"
+        cfgArgs="null"
+        />
+    </configurations>
+    <executables>
+    <executable name="debug"
+        pname="debug.xem4f"
+        target="ti.targets.arm.elf.M4F"
+        platform="ti.platforms.msp432:MSP432P401R"
+        profile="release"
+        xCfgScript="package/cfg/debug_pem4f.cfg"
+        xCfgPrefix="package/cfg/debug_pem4f"
+        cfgScript="E:/Intership/Other_projects/MsysCode/tirtos_builds_MSP_EXP432P401R_debug_ccs/debug.cfg"
+        cfgArgs="null"
+        />
+    </executables>
+    <tests>
+    <test exeName="debug.xem4f"
+        args=""
+        groupName="debug.xem4f"
+        refOutput="undefined"
+        refExitCode="0"
+        execArgs=""
+        />
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="configPkg"
+        pname="configPkg.tar"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

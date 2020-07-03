@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?ccsproject version="1.0"?>
+<projectOptions>
+	<ccsVersion value="9.3.0"/>
+	<deviceVariant value="MSP432P401R"/>
+	<deviceFamily value="MSP432"/>
+	<deviceEndianness value="little"/>
+	<codegenToolVersion value="18.12.4.LTS"/>
+	<isElfFormat value="true"/>
+	<createSlaveProjects value=""/>
+	<ignoreDefaultDeviceSettings value="true"/>
+	<ignoreDefaultCCSSettings value="true"/>
+	<templateProperties value="id=tirtos_builds_MSP_EXP432P401R_debug_ccs.projectspec.tirtos_builds_MSP_EXP432P401R_debug_ccs,products=com.ti.SIMPLELINK_MSP432_SDK,xdcToolsVersion=3.60.999,target=ti.targets.arm.elf.M4F,platform=ti.platforms.msp432:MSP432P401R,buildProfile=release"/>
+	<origin value="/Users/air/SVN_FW/SVN_FW_Canary_trunk/tirtos_builds_MSP_EXP432P401R_debug_ccs"/>
+	<filesToOpen value=""/>
+	<isTargetManual value="false"/>
+</projectOptions>
